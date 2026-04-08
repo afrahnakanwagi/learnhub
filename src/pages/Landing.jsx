@@ -1,4 +1,4 @@
-﻿import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { BookOpen, Play, Star, Users, Award, TrendingUp, CheckCircle, ArrowRight, Zap, Globe, Clock } from "lucide-react";
 
 const stats = [
@@ -179,13 +179,13 @@ export default function Landing() {
       <section className="bg-orange-500 py-14">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map(({ label, value, icon: Icon }) => (
-              <div key={label} className="text-center">
+            {stats.map((item) => (
+              <div key={item.label} className="text-center">
                 <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                  <Icon size={22} className="text-white" />
+                  <item.icon size={22} className="text-white" />
                 </div>
-                <div className="text-3xl font-extrabold text-white mb-1">{value}</div>
-                <div className="text-orange-100 text-sm font-medium">{label}</div>
+                <div className="text-3xl font-extrabold text-white mb-1">{item.value}</div>
+                <div className="text-orange-100 text-sm font-medium">{item.label}</div>
               </div>
             ))}
           </div>
@@ -203,13 +203,13 @@ export default function Landing() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map(({ icon: Icon, title, desc, color }) => (
-              <div key={title} className="group p-6 rounded-2xl border border-gray-100 hover:border-orange-200 hover:shadow-lg transition-all duration-300 cursor-default">
-                <div className={`w-12 h-12 ${color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                  <Icon size={22} />
+            {features.map((item) => (
+              <div key={item.title} className="group p-6 rounded-2xl border border-gray-100 hover:border-orange-200 hover:shadow-lg transition-all duration-300 cursor-default">
+                <div className={`w-12 h-12 ${item.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  <item.icon size={22} />
                 </div>
-                <h3 className="font-bold text-gray-900 mb-2 text-lg">{title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                <h3 className="font-bold text-gray-900 mb-2 text-lg">{item.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>

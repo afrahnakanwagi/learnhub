@@ -1,7 +1,7 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
-import { BookOpen, Clock, Award, TrendingUp, Play, ChevronRight, Flame, Star, Target, Trophy, Zap } from "lucide-react";
+import { BookOpen, Clock, Award, Play, ChevronRight, Flame, Trophy } from "lucide-react";
 import DashboardLayout from "../components/layout/DashboardLayout";
 import ProgressBar from "../components/ui/ProgressBar";
 import { useStore } from "../store/useStore";
@@ -64,16 +64,16 @@ export default function StudentDashboard() {
             { label: "Hours Learned", value: Math.round(totalMinutes / 60) + "h", icon: Clock, color: "bg-blue-50 text-blue-500", change: "+2h today" },
             { label: "Certificates", value: "2", icon: Award, color: "bg-green-50 text-green-500", change: "1 in progress" },
             { label: "Day Streak", value: "7 🔥", icon: Flame, color: "bg-red-50 text-red-500", change: "Personal best!" },
-          ].map(({ label, value, icon: Icon, color, change }) => (
-            <div key={label} className="bg-white rounded-2xl border border-gray-100 shadow-card p-5 hover:shadow-pop transition-shadow">
+          ].map((item) => (
+            <div key={item.label} className="bg-white rounded-2xl border border-gray-100 shadow-card p-5 hover:shadow-pop transition-shadow">
               <div className="flex items-center justify-between mb-3">
-                <div className={`w-10 h-10 ${color} rounded-xl flex items-center justify-center`}>
-                  <Icon size={18} />
+                <div className={`w-10 h-10 ${item.color} rounded-xl flex items-center justify-center`}>
+                  <item.icon size={18} />
                 </div>
-                <span className="text-xs text-green-600 font-semibold bg-green-50 px-2 py-0.5 rounded-full">{change}</span>
+                <span className="text-xs text-green-600 font-semibold bg-green-50 px-2 py-0.5 rounded-full">{item.change}</span>
               </div>
-              <p className="text-2xl font-extrabold text-gray-900">{value}</p>
-              <p className="text-sm text-gray-500 mt-0.5">{label}</p>
+              <p className="text-2xl font-extrabold text-gray-900">{item.value}</p>
+              <p className="text-sm text-gray-500 mt-0.5">{item.label}</p>
             </div>
           ))}
         </div>

@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { BookOpen, Mail, Lock, User, Eye, EyeOff, ArrowRight, CheckCircle, GraduationCap, PenTool } from "lucide-react";
 import { useStore } from "../store/useStore";
@@ -9,7 +9,6 @@ export default function Register() {
   const [form, setForm] = useState({ name: "", email: "", password: "", role: "student" });
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState(1);
 
   const passwordStrength = (p) => {
     if (!p) return { score: 0, label: "", color: "" };

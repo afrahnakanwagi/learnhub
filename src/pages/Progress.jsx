@@ -1,4 +1,4 @@
-﻿import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, RadialBarChart, RadialBar, PieChart, Pie, Cell } from "recharts";
 import { Award, TrendingUp, Clock, BookOpen, Flame, Star, Trophy, Target, ChevronRight } from "lucide-react";
 import DashboardLayout from "../components/layout/DashboardLayout";
@@ -44,14 +44,14 @@ export default function Progress() {
             { label: "Courses In Progress", value: enrollments.length, icon: BookOpen, color: "text-orange-500 bg-orange-50", sub: "2 near completion" },
             { label: "Certificates Earned", value: "2", icon: Award, color: "text-green-500 bg-green-50", sub: "1 pending" },
             { label: "Current Streak", value: "7 days", icon: Flame, color: "text-red-500 bg-red-50", sub: "🔥 Personal best!" },
-          ].map(({ label, value, icon: Icon, color, sub }) => (
-            <div key={label} className="bg-white rounded-2xl border border-gray-100 shadow-card p-5">
-              <div className={`w-10 h-10 ${color} rounded-xl flex items-center justify-center mb-3`}>
-                <Icon size={18} />
+          ].map((item) => (
+            <div key={item.label} className="bg-white rounded-2xl border border-gray-100 shadow-card p-5">
+              <div className={`w-10 h-10 ${item.color} rounded-xl flex items-center justify-center mb-3`}>
+                <item.icon size={18} />
               </div>
-              <p className="text-2xl font-extrabold text-gray-900">{value}</p>
-              <p className="text-sm text-gray-500">{label}</p>
-              <p className="text-xs text-green-600 font-semibold mt-1">{sub}</p>
+              <p className="text-2xl font-extrabold text-gray-900">{item.value}</p>
+              <p className="text-sm text-gray-500">{item.label}</p>
+              <p className="text-xs text-green-600 font-semibold mt-1">{item.sub}</p>
             </div>
           ))}
         </div>

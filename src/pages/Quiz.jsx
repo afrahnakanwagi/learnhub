@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Clock, CheckCircle, XCircle, Trophy, ArrowRight, RotateCcw, Home } from "lucide-react";
 import DashboardLayout from "../components/layout/DashboardLayout";
@@ -33,8 +33,13 @@ export default function Quiz() {
 
   useEffect(() => {
     if (phase !== "quiz") return;
-    if (timeLeft === 0) { handleTimeout(); return; }
-    const t = setTimeout(() => setTimeLeft(t => t - 1), 1000);
+    const t = setTimeout(() => {
+      if (timeLeft <= 1) {
+        handleTimeout();
+        return;
+      }
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
     return () => clearTimeout(t);
   }, [timeLeft, phase, handleTimeout]);
 

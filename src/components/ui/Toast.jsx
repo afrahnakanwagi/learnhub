@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { CheckCircle, XCircle, AlertCircle, Info, X } from "lucide-react";
 
 const icons = {
@@ -40,14 +40,4 @@ export function ToastContainer({ toasts, removeToast }) {
       ))}
     </div>
   );
-}
-
-export function useToast() {
-  const [toasts, setToasts] = useState([]);
-  const addToast = (message, type = "success") => {
-    const id = Date.now();
-    setToasts(prev => [...prev, { id, message, type }]);
-  };
-  const removeToast = (id) => setToasts(prev => prev.filter(t => t.id !== id));
-  return { toasts, addToast, removeToast };
 }

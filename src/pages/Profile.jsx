@@ -1,8 +1,9 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { User, Mail, Camera, Save, Bell, Lock, Globe, Shield, CheckCircle } from "lucide-react";
 import DashboardLayout from "../components/layout/DashboardLayout";
 import { useStore } from "../store/useStore";
-import { useToast, ToastContainer } from "../components/ui/Toast";
+import { ToastContainer } from "../components/ui/Toast";
+import { useToast } from "../hooks/useToast";
 
 export default function Profile() {
   const { user, login } = useStore();
